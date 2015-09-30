@@ -223,8 +223,7 @@ public class UploadActivity extends AppCompatActivity {
         }
         catch (Exception e)
         {
-            Toast toast = Toast.makeText(this,R.string.toomanyrefresh,Toast.LENGTH_SHORT);
-            toast.show();
+            Log.e("Nanum",e.toString());
         }
 
     }
