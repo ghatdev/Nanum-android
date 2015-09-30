@@ -1,0 +1,43 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+    defaultConfig {
+        applicationId "xyz.ghatdev.nanum"
+        minSdkVersion 19
+        targetSdkVersion 23
+        versionCode 12
+        versionName '4.16.18r'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:23.0.1'
+    compile project(':apache-mime4j-core-0.7.2')
+    compile project(':httpclient-4.5.1')
+    compile project(':httpcore-4.4.3')
+    compile project(':httpmime-4.3.1')
+    compile project(':EventBus-2.4.0')
+    compile project(':realm-0.82.2')
+    compile 'com.android.support:design:23.0.1'
+    compile project(':signalr-client-sdk')
+    compile project(':signalr-client-sdk-android-release')
+}
+android {
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/DEPENDENCIES'
+    }
+    useLibrary 'org.apache.http.legacy'
+}

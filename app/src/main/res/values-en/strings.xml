@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Nanum</string>
+    <string name="title_activity_save">Save to SD card</string>
+    <string name="title_activity_share">Share via URL</string>
+    <string name="action_settings">Settings</string>
+    <string name="sd_save">Save</string>
+    <string name="view_filename">File name : </string>
+    <string name="title_activity_upload">Uploads</string>
+    <string name="toast_filenot">File not uploaded</string>
+    <string name="file_uploaded">File link copied</string>
+    <string name="btn_gouploads">Uploaded files</string>
+    <string name="string_notext">Unable to upload plain text</string>
+    <string name="btn_closedialog">Close</string>
+    <string name="btn_sharelink">Share link</string>
+    <string name="share">Share</string>
+    <string name="unabletoshare">Unable to share</string>
+    <string name="text_copylink">Copy link</string>
+    <string name="noti_uploading">Upload in progress</string>
+    <string name="text_uploading">Uploading files</string>
+    <string name="noti_uploadcomplete">Upload finished</string>
+    <string name="pref_info_summary">Send mail to developer</string>
+    <string name="pref_info_title">Send mail</string>
+    <string name="pref_information">About</string>
+    <string name="pref_btn">Function</string>
+    <string name="pref_btn_title">Open file list</string>
+    <string name="pref_btn_uploads">Show uploaded files</string>
+    <string name="choosefile">Choose file</string>
+    <string name="upload_error">Failed to upload</string>
+    <string name="toomanyrefresh">Wait a moment please</string>
+    <string name="askdelete">Really delete?</string>
+    <string name="cancel">Cancel</string>
+    <string name="deleted">Deleted</string>
+    <string name="text_delete">Delete</string>
+</resources>

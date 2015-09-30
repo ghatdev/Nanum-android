@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Nanum</string>
+
+    <string name="action_settings">설정</string>
+    <string name="title_activity_share">공유링크 생성</string>
+    <string name="title_activity_save">SD카드에 저장</string>
+    <string name="sd_save" >저장</string>
+    <string name="view_filename" >파일이름 : </string>
+    <string name="title_activity_upload">업로드</string>
+
+    <string name="share" >공유</string>
+    <string name="toast_filenot">파일이 아직 업로드되지 않았습니다</string>
+    <string name="file_uploaded">주소가 복사되었습니다</string>
+    <string name="btn_gouploads">업로드한 파일 목록</string>
+    <string name="string_notext">텍스트 형식은 업로드 할 수 없습니다</string>
+    <string name="btn_sharelink">링크 공유</string>
+    <string name="btn_closedialog">닫기</string>
+    <string name="unabletoshare">공유가 불가능한 형식입니다</string>
+    <string name="text_copylink">링크 복사</string>
+    <string name="text_uploading">파일을 업로드 중입니다</string>
+    <string name="noti_uploading">업로드가 진행중 입니다</string>
+    <string name="noti_uploadcomplete">업로드가 완료되었습니다</string>
+    <string name="upload_error">업로드에 실패하였습니다</string>
+
+    <string name="pref_information">어플리케이션 정보</string>
+    <string name="pref_info_summary">개발자에게 메일을 보냅니다</string>
+    <string name="pref_info_title">메일 보내기</string>
+
+    <string name="pref_btn_title">파일목록 열기</string>
+    <string name="pref_btn_uploads">업로드한 파일목록을 불러옵니다</string>
+    <string name="pref_btn">기능</string>
+    <string name="choosefile">파일 선택</string>
+    <string name="toomanyrefresh">잠시 후에 다시 시도해 주세요</string>
+
+    <string name="askdelete">정말로 삭제하시겠습니까?</string>
+    <string name="cancel">취소</string>
+    <string name="text_delete">삭제</string>
+    <string name="deleted">삭제되었습니다</string>
+</resources>
