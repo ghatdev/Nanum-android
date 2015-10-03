@@ -56,6 +56,7 @@ import io.realm.RealmConfiguration;
 import io.realm.exceptions.RealmMigrationNeededException;
 import microsoft.aspnet.signalr.client.hubs.HubConnection;
 
+
 public class UploadService extends Service {
 
     private final String serverUrl = "http://api.ghatdev.xyz/File/Upload";
@@ -73,6 +74,7 @@ public class UploadService extends Service {
     private EventBus bus = EventBus.getDefault();
 
     private HubConnection connection;
+
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -111,6 +113,8 @@ public class UploadService extends Service {
         {
             Realm.migrateRealm(realmConfiguration);
         }
+
+        connection = new HubConnection("");
 
 
         filename = intent.getStringExtra("fname");

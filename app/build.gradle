@@ -30,8 +30,9 @@ dependencies {
     compile project(':EventBus-2.4.0')
     compile project(':realm-0.82.2')
     compile 'com.android.support:design:23.0.1'
+    compile 'com.google.code.gson:gson:2.3.1'
     compile project(':signalr-client-sdk')
-    compile project(':signalr-client-sdk-android-release')
+    compile project(':signalr-client-sdk-android')
 }
 android {
     packagingOptions {
