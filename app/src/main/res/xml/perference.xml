@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory
-        android:title="@string/pref_btn">
+    <PreferenceCategory android:title="@string/pref_btn">
         <Preference
             android:summary="@string/pref_btn_uploads"
             android:title="@string/pref_btn_title">
-            <intent
-                android:action="xyz.ghatdev.nanum.OPEN_UPLOADS"/>
+            <intent android:action="xyz.ghatdev.nanum.OPEN_UPLOADS" />
         </Preference>
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:title="@string/pref_information">
+    <PreferenceCategory android:title="@string/pref_information">
 
         <Preference
             android:summary="@string/pref_info_summary"
             android:title="@string/pref_info_title">
             <intent
                 android:action="android.intent.action.SENDTO"
-                android:data="mailto:issacs98@gmail.com"/>
+                android:data="mailto:issacs98@gmail.com" />
         </Preference>
 
 

@@ -17,10 +17,6 @@ public class ProgressHttpEntityWrapper extends HttpEntityWrapper {
 
     private final ProgressCallback progressCallback;
 
-    public static interface ProgressCallback {
-        public void progress(float progress);
-    }
-
     public ProgressHttpEntityWrapper(final HttpEntity entity, final ProgressCallback progressCallback) {
         super(entity);
         this.progressCallback = progressCallback;
@@ -29,6 +25,10 @@ public class ProgressHttpEntityWrapper extends HttpEntityWrapper {
     @Override
     public void writeTo(final OutputStream out) throws IOException {
         this.wrappedEntity.writeTo(out instanceof ProgressFilterOutputStream ? out : new ProgressFilterOutputStream(out, this.progressCallback, getContentLength()));
+    }
+
+    public static interface ProgressCallback {
+        public void progress(float progress);
     }
 
     static class ProgressFilterOutputStream extends FilterOutputStream {

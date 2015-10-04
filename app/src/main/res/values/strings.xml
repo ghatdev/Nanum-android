@@ -4,11 +4,11 @@
     <string name="action_settings">설정</string>
     <string name="title_activity_share">공유링크 생성</string>
     <string name="title_activity_save">SD카드에 저장</string>
-    <string name="sd_save" >저장</string>
-    <string name="view_filename" >파일이름 : </string>
+    <string name="sd_save">저장</string>
+    <string name="view_filename">파일이름 : </string>
     <string name="title_activity_upload">업로드</string>
 
-    <string name="share" >공유</string>
+    <string name="share">공유</string>
     <string name="toast_filenot">파일이 아직 업로드되지 않았습니다</string>
     <string name="file_uploaded">주소가 복사되었습니다</string>
     <string name="btn_gouploads">업로드한 파일 목록</string>
