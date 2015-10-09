@@ -32,8 +32,6 @@ import java.util.Random;
 
 import de.greenrobot.event.EventBus;
 import io.realm.Realm;
-import io.realm.RealmConfiguration;
-import io.realm.exceptions.RealmMigrationNeededException;
 import microsoft.aspnet.signalr.client.hubs.HubConnection;
 
 
@@ -80,6 +78,15 @@ public class UploadService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flag, int startid) {
         super.onStartCommand(intent, flag, startid);
+
+        try{
+            Realm.getDefaultInstance();
+        }
+        catch (Exception e)
+        {
+            startService(new Intent(UploadService.this,MainService.class));
+        }
+
         i = intent;
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, UploadActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
@@ -94,16 +101,6 @@ public class UploadService extends Service {
         nbuilder.setContentText(getString(R.string.text_uploading));
         nbuilder.setAutoCancel(false);
 
-
-        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder(this).build();
-        try {
-
-            Realm.setDefaultConfiguration(realmConfiguration);
-            Realm mdb = Realm.getDefaultInstance();
-        } catch (RealmMigrationNeededException e) {
-            Realm.migrateRealm(realmConfiguration);
-        }
-
         connection = new HubConnection("");
 
 
@@ -115,7 +112,7 @@ public class UploadService extends Service {
             Thread uploadThread = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    Realm db = Realm.getDefaultInstance();
+                    Realm db=Realm.getDefaultInstance();
                     File file = new File(filename);
                     String result = "";
                     int r = getRandom(100000, 10);
