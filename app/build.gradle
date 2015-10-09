@@ -5,9 +5,9 @@ android {
     buildToolsVersion "23.0.1"
     defaultConfig {
         applicationId "xyz.ghatdev.nanum"
-        minSdkVersion 19
-        targetSdkVersion 23
-        versionCode 12
+        minSdkVersion 16
+        targetSdkVersion 21
+        versionCode 14
         versionName '4.16.18r'
     }
     buildTypes {
@@ -33,6 +33,7 @@ dependencies {
     compile 'com.google.code.gson:gson:2.3.1'
     compile project(':signalr-client-sdk')
     compile project(':signalr-client-sdk-android')
+    compile project(':aFileChooser')
 }
 android {
     packagingOptions {
