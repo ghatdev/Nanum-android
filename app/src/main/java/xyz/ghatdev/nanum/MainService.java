@@ -37,11 +37,8 @@ public class MainService extends Service {
     public MainService() {
     }
 
-
-
     private NotificationManager notificationManager;
     private Notification.Builder builder;
-
 
     @Override
     public IBinder onBind(Intent intent) {
