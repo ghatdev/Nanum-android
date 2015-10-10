@@ -259,6 +259,17 @@ public class MainService extends Service {
                 {
                     dest=1;
                 }
+                else
+                {
+                    if(mParams.x<0)
+                    {
+                        dest=0;
+                    }
+                    else if(mParams.x>0)
+                    {
+                        dest=1;
+                    }
+                }
                 mTrayTimerTask = new TrayAnimationTimerTask(dest);
                 mTrayAnimationTimer = new Timer();
                 mTrayAnimationTimer.schedule(mTrayTimerTask, 0, ANIMATION_FRAME_RATE);

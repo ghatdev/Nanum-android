@@ -43,7 +43,7 @@ public class UploadService extends Service {
     private int k = 0;
     private NotificationManager notificationManager;
     private Notification.Builder nbuilder;
-    private int nId = 0;
+    private int nId = 10;
     ProgressHttpEntityWrapper.ProgressCallback progressCallback = new ProgressHttpEntityWrapper.ProgressCallback() {
         @Override
         public void progress(float progress) {

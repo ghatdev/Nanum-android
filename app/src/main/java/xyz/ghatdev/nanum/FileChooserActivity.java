@@ -19,7 +19,6 @@ public class FileChooserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_file_chooser);
         showChooser();
-        finish();
     }
 
     private void showChooser() {
@@ -60,5 +59,6 @@ public class FileChooserActivity extends AppCompatActivity {
                 break;
         }
         super.onActivityResult(requestCode, resultCode, data);
+        finish();
     }
 }

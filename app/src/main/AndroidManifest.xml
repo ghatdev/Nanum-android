@@ -79,6 +79,11 @@
 
         <activity android:name=".FileChooserActivity" >
         </activity>
+        <activity
+            android:name=".UploadListActivity"
+            android:label="@string/title_activity_upload_list"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>

@@ -25,6 +25,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import de.greenrobot.event.EventBus;
@@ -163,7 +164,7 @@ public class UploadActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                refresh();
+                startActivity(new Intent(UploadActivity.this, FileChooserActivity.class));
             }
         });
 
