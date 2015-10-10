@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
 import com.ipaulpro.afilechooser.utils.FileUtils;
@@ -46,13 +47,22 @@ public class FileChooserActivity extends AppCompatActivity {
                         try {
                             // Get the file path from the URI
                             final String path = FileUtils.getPath(this, uri);
-                            final String type = FileUtils.getMimeType(this,uri);
+                            String type = FileUtils.getMimeType(this,uri);
+                            if(type==null)
+                            {
+                                if(path.lastIndexOf(".") != -1) {
+                                    String ext = path.substring(path.lastIndexOf(".") + 1);
+                                    MimeTypeMap mime = MimeTypeMap.getSingleton();
+                                    type = mime.getMimeTypeFromExtension(ext.toLowerCase());
+                                }
+                            }
                             Intent service = new Intent(this, UploadService.class);
                             service.putExtra("fname", path);
                             service.putExtra("type", type);
                             startService(service);
                         } catch (Exception e) {
                             Log.e("NANUM","An error occurred");
+                            Log.e("Nanum",e.toString());
                         }
                     }
                 }
