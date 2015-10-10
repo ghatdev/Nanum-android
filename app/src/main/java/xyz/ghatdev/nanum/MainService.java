@@ -73,6 +73,7 @@ public class MainService extends Service {
         builder.setContentTitle(getString(R.string.qmenu_title));
         builder.setContentText(getString(R.string.qmenu_text));
         builder.setSmallIcon(R.drawable.ic_noti);
+        builder.setPriority(Notification.PRIORITY_MIN);
         builder.setOngoing(true);
 
         startForeground(startid, builder.build());

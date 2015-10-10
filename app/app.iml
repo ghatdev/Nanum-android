@@ -98,13 +98,13 @@
     <orderEntry type="library" exported="" name="support-annotations-23.0.1" level="project" />
     <orderEntry type="module" module-name="httpmime-4.3.1" exported="" />
     <orderEntry type="module" module-name="EventBus-2.4.0" exported="" />
-    <orderEntry type="module" module-name="httpclient-4.5.1" exported="" />
     <orderEntry type="module" module-name="httpcore-4.4.3" exported="" />
+    <orderEntry type="module" module-name="httpclient-4.5.1" exported="" />
     <orderEntry type="module" module-name="apache-mime4j-core-0.7.2" exported="" />
     <orderEntry type="module" module-name="aFileChooser" exported="" />
     <orderEntry type="module" module-name="realm-0.82.2" exported="" />
-    <orderEntry type="module" module-name="signalr-client-sdk-android" exported="" />
     <orderEntry type="module" module-name="signalr-client-sdk" exported="" />
+    <orderEntry type="module" module-name="signalr-client-sdk-android" exported="" />
     <orderEntry type="library" exported="" name="org.apache.http.legacy-android-23" level="project" />
   </component>
 </module>

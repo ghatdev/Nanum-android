@@ -7,8 +7,8 @@ android {
         applicationId "xyz.ghatdev.nanum"
         minSdkVersion 16
         targetSdkVersion 21
-        versionCode 14
-        versionName '4.16.18r'
+        versionCode 15
+        versionName '4.16.20r'
     }
     buildTypes {
         release {
