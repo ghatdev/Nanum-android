@@ -32,6 +32,6 @@
     <string name="cancel">Cancel</string>
     <string name="deleted">Deleted</string>
     <string name="text_delete">Delete</string>
-    <string name="qmenu_text">Quick menu launched</string>
-    <string name="qmenu_title">Quick menu</string>
+    <string name="qmenu_text">Tap to launch quick menu</string>
+    <string name="qmenu_title">Nanum</string>
 </resources>

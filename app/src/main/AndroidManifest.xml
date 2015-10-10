@@ -84,6 +84,12 @@
             android:label="@string/title_activity_upload_list"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+
+        <service
+            android:name=".HeadService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
     </application>
 
 </manifest>
