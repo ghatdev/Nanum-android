@@ -109,7 +109,11 @@ public class HeadService extends Service {
             mParams.x=Math.round((float)mParams.x*lx);
             mParams.y=Math.round((float)mParams.y*ly);
         }
-        windowManager.updateViewLayout(appHead,mParams);
+
+        if(isTray)
+        {
+            windowManager.updateViewLayout(appHead,mParams);
+        }
     }
 
     private ImageView.OnClickListener mViewClickListener = new ImageView.OnClickListener() {
