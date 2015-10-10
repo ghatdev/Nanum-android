@@ -36,4 +36,7 @@
     <string name="cancel">취소</string>
     <string name="text_delete">삭제</string>
     <string name="deleted">삭제되었습니다</string>
+
+    <string name="qmenu_title">퀵메뉴</string>
+    <string name="qmenu_text">퀵메뉴가 실행중입니다</string>
 </resources>

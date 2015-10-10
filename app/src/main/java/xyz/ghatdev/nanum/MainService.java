@@ -1,18 +1,29 @@
 package xyz.ghatdev.nanum;
 
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.Service;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
 import android.graphics.PixelFormat;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.IBinder;
+import android.service.notification.NotificationListenerService;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.ipaulpro.afilechooser.utils.FileUtils;
+
+import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -41,6 +52,9 @@ public class MainService extends Service {
     private ImageView uploadBtn;
     private WindowManager.LayoutParams btnParams;
     private boolean isOpen = false;
+    private NotificationManager notificationManager;
+    private Notification.Builder builder;
+    private int dest=0;
 
     private SharedPreferences preferences;
 
@@ -53,6 +67,16 @@ public class MainService extends Service {
     @Override
     public int onStartCommand(Intent intent,int flag, int startid)
     {
+
+        notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+        builder = new Notification.Builder(this);
+        builder.setContentTitle(getString(R.string.qmenu_title));
+        builder.setContentText(getString(R.string.qmenu_text));
+        builder.setSmallIcon(R.drawable.ic_noti);
+        builder.setOngoing(true);
+
+        startForeground(startid, builder.build());
+
         RealmConfiguration realmConfiguration = new RealmConfiguration.Builder(this).build();
         try {
 
@@ -62,7 +86,69 @@ public class MainService extends Service {
             Realm.migrateRealm(realmConfiguration);
         }
 
-        return START_STICKY_COMPATIBILITY;
+        int screenWidth=getResources().getDisplayMetrics().widthPixels;
+        preferences = getSharedPreferences("default",MODE_PRIVATE);
+
+
+        windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
+
+        uploadBtn = new ImageView(MainService.this);
+        uploadBtn.setImageResource(R.mipmap.btn_upload);
+
+        uploadBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainService.this, FileChooserActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
+                if(isOpen){
+                    uploadBtn.setVisibility(View.INVISIBLE);
+                    isOpen=false;
+                }
+            }
+        });
+
+
+
+        appHead = new ImageView(this);
+        appHead.setImageResource(R.mipmap.ic_launcher);
+        appHead.setOnTouchListener(mViewTouchListener);
+        appHead.setOnClickListener(mViewClickListener);
+        appHead.setClickable(true);
+
+        mParams = new WindowManager.LayoutParams(
+                WindowManager.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.TYPE_PHONE,
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE| WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                PixelFormat.TRANSLUCENT);
+
+        mParams.x=preferences.getInt("headX", (screenWidth/2)-(appHead.getWidth()/2)+(appHead.getWidth()/3));
+        mParams.y=preferences.getInt("headY",0);
+
+        btnParams = new WindowManager.LayoutParams(
+                WindowManager.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.TYPE_PHONE,
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                PixelFormat.TRANSLUCENT);
+
+        if(mParams.x<0)
+        {
+            btnParams.x=mParams.x+appHead.getWidth()*3/2;
+        }
+        else
+        {
+            btnParams.x=mParams.x-appHead.getWidth()*3/2;
+        }
+        btnParams.y=mParams.y;
+
+        uploadBtn.setVisibility(View.INVISIBLE);
+
+        windowManager.addView(appHead, mParams);
+        windowManager.addView(uploadBtn,btnParams);
+
+        return START_STICKY;
     }
 
     private View.OnTouchListener mViewTouchListener = new View.OnTouchListener() {
@@ -125,61 +211,7 @@ public class MainService extends Service {
     public void onCreate() {
         super.onCreate();
 
-        int screenWidth=getResources().getDisplayMetrics().widthPixels;
-        preferences = getSharedPreferences("default",MODE_PRIVATE);
 
-
-        windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
-
-        uploadBtn = new ImageView(MainService.this);
-        uploadBtn.setImageResource(R.mipmap.btn_upload);
-
-        uploadBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-
-
-        appHead = new ImageView(this);
-        appHead.setImageResource(R.mipmap.ic_launcher);
-        appHead.setOnTouchListener(mViewTouchListener);
-        appHead.setOnClickListener(mViewClickListener);
-        appHead.setClickable(true);
-
-        mParams = new WindowManager.LayoutParams(
-                WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.TYPE_PHONE,
-                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE| WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                PixelFormat.TRANSLUCENT);
-
-        mParams.x=preferences.getInt("headX", (screenWidth/2)-(appHead.getWidth()/2)+(appHead.getWidth()/3));
-        mParams.y=preferences.getInt("headY",0);
-
-        btnParams = new WindowManager.LayoutParams(
-                WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.TYPE_PHONE,
-                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
-                PixelFormat.TRANSLUCENT);
-
-        if(mParams.x<0)
-        {
-            btnParams.x=mParams.x+appHead.getWidth()*3/2;
-        }
-        else
-        {
-            btnParams.x=mParams.x-appHead.getWidth()*3/2;
-        }
-        btnParams.y=mParams.y;
-
-        uploadBtn.setVisibility(View.INVISIBLE);
-
-        windowManager.addView(appHead, mParams);
-        windowManager.addView(uploadBtn,btnParams);
     }
 
     private void dragTray(int action, int x, int y){
@@ -218,7 +250,7 @@ public class MainService extends Service {
                 if ((mIsTrayOpen && (x-mStartDragX)<=0) ||
                         (!mIsTrayOpen && (x-mStartDragX)>=0))
                     mIsTrayOpen = !mIsTrayOpen;
-                int dest=0;
+
                 if(deltaX<-30)
                 {
                     dest=0;
@@ -228,7 +260,6 @@ public class MainService extends Service {
                     dest=1;
                 }
                 mTrayTimerTask = new TrayAnimationTimerTask(dest);
-
                 mTrayAnimationTimer = new Timer();
                 mTrayAnimationTimer.schedule(mTrayTimerTask, 0, ANIMATION_FRAME_RATE);
                 break;
@@ -309,4 +340,5 @@ public class MainService extends Service {
         super.onDestroy();
         if (appHead != null) windowManager.removeView(appHead);
     }
+
 }
