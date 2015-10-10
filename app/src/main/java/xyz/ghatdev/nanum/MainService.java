@@ -7,6 +7,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.BitmapFactory;
 import android.graphics.PixelFormat;
 import android.net.Uri;
@@ -173,10 +174,38 @@ public class MainService extends Service {
                 default:
                     return true;
             }
+            if(isOpen)
+            {
+                uploadBtn.setVisibility(View.INVISIBLE);
+            }
 
             return false;
         }
     };
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        Log.d("x",String.valueOf(mParams.x));
+        Log.d("y", String.valueOf(mParams.y));
+        int scrWidth = getResources().getDisplayMetrics().widthPixels;
+        int scrHeight = getResources().getDisplayMetrics().heightPixels;
+        float lx = (float) scrWidth / (float) scrHeight;
+        float ly = (float)scrHeight/(float)scrWidth;
+        // Checks the orientation of the screen
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            uploadBtn.setVisibility(View.INVISIBLE);
+            mParams.x=Math.round((float)mParams.x*lx);
+            mParams.y=Math.round((float)mParams.y*ly);
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            uploadBtn.setVisibility(View.INVISIBLE);
+            mParams.x=Math.round((float)mParams.x*lx);
+            mParams.y=Math.round((float)mParams.y*ly);
+        }
+        Log.d("dx",String.valueOf(lx));
+        Log.d("dy",String.valueOf(ly));
+        windowManager.updateViewLayout(appHead,mParams);
+    }
 
     private ImageView.OnClickListener mViewClickListener = new ImageView.OnClickListener() {
 
