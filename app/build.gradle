@@ -7,8 +7,8 @@ android {
         applicationId "xyz.ghatdev.nanum"
         minSdkVersion 16
         targetSdkVersion 21
-        versionCode 18
-        versionName '4.16.23r'
+        versionCode 19
+        versionName '4.16.25r'
     }
     buildTypes {
         release {
@@ -22,14 +22,14 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:23.0.1'
+    compile 'com.android.support:appcompat-v7:23.1.0'
     compile project(':apache-mime4j-core-0.7.2')
     compile project(':httpclient-4.5.1')
     compile project(':httpcore-4.4.3')
     compile project(':httpmime-4.3.1')
     compile project(':EventBus-2.4.0')
     compile project(':realm-0.82.2')
-    compile 'com.android.support:design:23.0.1'
+    compile 'com.android.support:design:23.1.0'
     compile 'com.google.code.gson:gson:2.3.1'
     compile project(':signalr-client-sdk')
     compile project(':signalr-client-sdk-android')

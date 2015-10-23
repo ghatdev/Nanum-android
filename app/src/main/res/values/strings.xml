@@ -40,4 +40,5 @@
     <string name="qmenu_title">Nanum</string>
     <string name="qmenu_text">퀵메뉴를 실행하려면 클릭하세요</string>
     <string name="title_activity_upload_list">UploadListActivity</string>
+    <string name="title_activity_start">StartActivity</string>
 </resources>

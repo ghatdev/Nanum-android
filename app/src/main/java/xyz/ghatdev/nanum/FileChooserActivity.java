@@ -56,6 +56,10 @@ public class FileChooserActivity extends AppCompatActivity {
                                     type = mime.getMimeTypeFromExtension(ext.toLowerCase());
                                 }
                             }
+                            if(type==null)
+                            {
+                                type="application/octet-stream";
+                            }
                             Intent service = new Intent(this, UploadService.class);
                             service.putExtra("fname", path);
                             service.putExtra("type", type);

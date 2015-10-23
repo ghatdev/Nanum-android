@@ -8,6 +8,16 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.NFC"/>
+    <uses-permission android:name="android.permission.BIND_NFC_SERVICE"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
 
     <application
         android:allowBackup="true"
@@ -37,10 +47,6 @@
                 <data android:mimeType="video/*" />
                 <data android:mimeType="multipart/*" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".SaveActivity"
-            android:label="@string/title_activity_save" >
         </activity>
 
         <service
@@ -90,6 +96,15 @@
             android:enabled="true"
             android:exported="true" >
         </service>
+
+        <activity
+            android:name=".StartActivity"
+            android:label="@string/title_activity_start"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity android:name=".wishare"
+            android:theme="@style/AppTheme.Dialog">
+        </activity>
     </application>
 
 </manifest>

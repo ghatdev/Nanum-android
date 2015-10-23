@@ -26,6 +26,7 @@ public class ShareActivity extends AppCompatActivity {
         Uri uri = (Uri) intent.getExtras().get(Intent.EXTRA_STREAM);
         file = uri.toString();
 
+
         if (file.startsWith("file:///")) {
             file = file.substring(7);
         } else if (file.startsWith("content://")) {

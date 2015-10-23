@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
         if(!isMyServiceRunning(this,"xyz.ghatdev.nanum.MainService")){
             startService(new Intent(this,MainService.class));
         }
+        startActivity(new Intent(this,wishare.class));
     }
 
     private boolean isMyServiceRunning(Context ctx, String s_service_name) {
